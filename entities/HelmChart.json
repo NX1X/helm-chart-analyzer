@@ -1,0 +1,59 @@
+{
+    "name": "HelmChart",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the Helm chart"
+      },
+      "version": {
+        "type": "string",
+        "description": "Version of the chart"
+      },
+      "description": {
+        "type": "string",
+        "description": "Chart description"
+      },
+      "content": {
+        "type": "string",
+        "description": "The YAML content of the chart"
+      },
+      "analysis_result": {
+        "type": "object",
+        "description": "Analysis results from LLM",
+        "properties": {
+          "potential_issues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "best_practices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "security_concerns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "analyzing",
+          "completed",
+          "error"
+        ],
+        "default": "analyzing"
+      }
+    },
+    "required": [
+      "name",
+      "content"
+    ]
+  }
